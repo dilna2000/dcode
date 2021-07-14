@@ -1,0 +1,79 @@
+{% extends 'index.html' %}
+{% block title %}Dcode Editor{% endblock title %}
+{% block style %}
+.CodeMirror {
+  border: 1px solid #eee;
+  height: 80vh;
+  font-size:15px;
+}
+.run-icon{
+    background-color:#1f1e1d;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    padding:10px;
+    text-align:right
+}
+.output-txt{
+    background-color:#1f1e1d;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    padding:10px;
+    color:#bc2d38;
+    font-family:Arial Black;
+}
+{% endblock style %}
+{% block body %}
+<div>
+    <div class="col-12 col-sm-6 col-md-6 col-lg-6" ><br/>
+        <form action="/run" method="post">
+            {% csrf_token %}
+            <div class="run-icon">
+                <button  type="submit" style="border:none;background-color:#1f1e1d" ><i class=" large play icon" style="color:#bc2d38"></i></button> 
+            </div>
+            <div class="ui form">
+                <div class="field" id="code_lines">
+                    <textarea class="codemirror-textarea" style="border:none;font-size:20px;" name="code_area">{{code}}</textarea>
+                </div>
+            </div> <br/>
+            <input type="checkbox"  style="display:inline-block" id="input_checkbox"><h4 style="font-family:Arial Black;display:inline-block;font-size:15px;"> &nbsp;Custom inputs</h4></input><br/><br/>
+            <div style="display:none" id="input_block">
+                <textarea style="outline:black" name="input_area" id="input_erase" row=10 >{{input}}</textarea>
+            </div>
+        </form>
+    </div>
+    <div class="col-12 col-sm-6 col-md-6 col-lg-6"   ><br/>
+        <div class="output-txt">
+                <button  type="submit" style="border:none;background-color:#1f1e1d" >Output</button> 
+        </div>
+        <form>
+            <div class="ui form">
+                <div class="field">
+                  <textarea readonly style="border:none;font-size: 15px;background-color:#1f1e1d;color:white" rows="25" id="output1" >{{output}}</textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    var checkbox = document.getElementById('input_checkbox');
+    var input = document.getElementById('input_block');
+    var input_erase=document.getElementById('input_erase');
+    $(document).ready(function(){
+    var codeText = $(".codemirror-textarea")[0];
+    var editor = CodeMirror.fromTextArea(codeText, {
+        lineNumbers : true,
+        tabSize: 2,
+  mode: 'python',
+  theme:'base16-dark'
+    });  
+});
+checkbox.addEventListener('click', function () {
+    if (input.style.display != 'block') {
+        input.style.display = 'block';
+        input_erase.value=""
+    } else {
+        input.style.display ='none';
+    }
+});
+</script>
+{% endblock body %}

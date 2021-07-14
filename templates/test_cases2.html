@@ -1,0 +1,32 @@
+{% extends 'test_cases.html' %}
+{% block title %}Print Function{% endblock title %}
+{% block h3 %}
+<div class="problems">
+            <h4 style="color:#7e7b79;line-height: 35px;">The included code stub will read an integer, n.
+Without using any string methods, try to print the following:<br/>
+123...n<br/>Note that "..." represents the consecutive values in between.<br/><b>Input Format</b><br/>The first line contains an integer n .<br/><b>Output Format
+            </b><br/>Print the list of integers from 1 through n as a string, without spaces.</h4>
+            <h4 style="color:#7e7b79;"><b>Sample input</b></h4>
+            <div class="sample-inp">3</div>
+            <h4 style="color:#7e7b79;"><b>Sample Output</b></h4>
+            <div class="sample-out">123</div>
+</div>
+{% endblock h3 %}
+{% block div %}
+<form action="/run_testcases2" method="post">
+            {% csrf_token %}
+            <div class="run-icon">
+                <button  type="submit" onclick="code()" style="border:none;background-color:#1f1e1d" ><i class=" large play icon" style="color:#bc2d38"></i></button> 
+            </div>
+            <div class="ui form">
+                <div class="field" >
+                    <textarea class="codemirror-textarea" style="border:none;font-size: 13px" name="code_area"  rows="0">{{code}}</textarea>
+                </div>
+            </div><br/>
+            <button class="ui black button" onclick="case_block()" formaction="/submit_testcases2" style="margin-left:20px;font-size: 13px;color:#bc2d38;font-family:Arial Black;">Submit</button>
+             <br/><br/><input type="checkbox" id="input_checkbox" style="margin-left:40px;display:inline-block;"><h4 style="font-family:Arial Black;display:inline-block;font-size:15px"> &nbsp;Give custom inputs</h4></input>
+        <div style="display:none;" id="input_block">
+            <textarea style="outline:black" name="input_area" id="input_erase" row=10 >{{input}}</textarea>
+        </div>
+        </form>
+{% endblock div %}

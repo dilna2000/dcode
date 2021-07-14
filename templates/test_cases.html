@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.css">
+</link>
+    <script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.js">
+</script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/mode/python/python.min.js">
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/theme/base16-dark.min.css">
+    <title>{% block title %}Python:Tuples{% endblock title %}</title>
+    <style>
+.CodeMirror {
+  border: 1px solid #eee;
+  height: 80vh;
+  font-size:15px;
+}
+.run-icon{
+    background-color:#1f1e1d;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    padding:10px;
+    text-align:right
+}
+.output-txt{
+    background-color:#1f1e1d;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    padding:10px;
+    color:#bc2d38;
+    font-family:Arial Black;
+}
+.problems{
+    padding:20px;
+}
+.test-case-div{
+    height:1400px;
+    border-radius:10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding:20px;
+    margin-top:40px;
+    margin-bottom:20px
+}
+.sample-inp{
+    padding:10px;
+    background-color:#bc2d393d;
+    border-radius: 10px;
+    width:20%
+}
+.sample-out{
+    padding:10px;
+    background-color:#bc2d392f;
+    border-radius: 10px;
+    width:20%
+}
+@media only screen and (max-width:1000px) {
+  .test-case-div {
+    box-shadow: rgba(0, 0, 0, 0.027) 0px 5px 15px;
+  }
+}
+    </style>
+</head>
+<body>
+<div  class="test-case-div container" >
+    <div>
+        {% block h3 %}
+        <div class="problems">
+            <h4 style="color:#7e7b79;line-height: 35px;">Given an integer, n , and n space-separated integers as input, create a tuple,t, of those n  integers. Then compute and print the result of hash(t).<br/><b>Input Format</b><br/>The first line contains  space-separated integers describing the elements in tuple .<br/><b>Output Format
+            </b><br/>Print the result of hash(t).</h4>
+            <h4 style="color:#7e7b79;"><b>Sample input</b></h4>
+            <div class="sample-inp">1 2</div>
+            <h4 style="color:#7e7b79;"><b>Sample Output</b></h4>
+            <div class="sample-out">3713081631934410656</div>
+        </div>
+        {% endblock h3 %}
+    </div>
+    <div class="col-12 col-sm-6 col-md-6 col-lg-6" ><br/>
+        {% block div %}
+        <form action="/run_testcases" method="post">
+            {% csrf_token %}
+            <div class="run-icon">
+                <button  type="submit" onclick="code()" style="border:none;background-color:#1f1e1d" ><i class=" large play icon" style="color:#bc2d38"></i></button> 
+            </div>
+            <div class="ui form">
+                <div class="field" >
+                    <textarea class="codemirror-textarea" style="border:none;font-size: 13px" name="code_area"  rows="0">{{code}}</textarea>
+                </div>
+            </div><br/>
+            <button class="ui black button" onclick="case_block()"   formaction="/submit_testcases" style="margin-left:20px;font-size: 13px;color:#bc2d38;font-family:Arial Black;">Submit</button>
+            
+    <br/><br/><input type="checkbox" id="input_checkbox" style="margin-left:40px;display:inline-block;"><h4 style="font-family:Arial Black;display:inline-block;font-size:15px"> &nbsp;Give custom inputs</h4></input>
+        <div style="display:none;" id="input_block">
+            <textarea style="outline:black" name="input_area" id="input_erase" row=10 >{{input}}</textarea>
+        </div>
+        </form>
+        {% endblock div %}
+    </div>
+    <div class="col-12 col-sm-6 col-md-6 col-lg-6" ><br/>
+        <div class="output-txt">
+            <button  type="submit" style="border:none;background-color:#1f1e1d">Output</button> 
+        </div>
+        <form>
+            <div class="ui form">
+                <div class="field">
+                   <textarea readonly style="border:none;font-size:13px;background-color:#1f1e1d;color:white" rows=30 id="output1">{{output}}</textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-12 col-md-12 col-12 col-lg-12" >
+        <div id="test_case_block" style="box-shadow: -4px 6px 8px rgba(204, 198, 198, 0.411);border-radius:10px;margin:20px;padding:20px;background-color:#1f1e1d">
+            <h3 style="color:#bc2d38;font-family:Arial Black;">Test Case Status</h3>
+            <h3 style="color:rgb(218, 210, 210);font-family:Arial Black;">{{test_case_accepted}}</h3>
+            <h3 style="color:rgb(218, 210, 210);">{{expected_output}}</h3>
+            <p style="color:#bc2d38" >{{outputt}}</p>
+            <h3 style="color:rgb(218, 210, 210);">{{your_output}}</h3>
+            <p style="color:#bc2d38" >{{output1}}</p>
+        </div><br/>
+        </div>
+    </div> 
+</div>
+<script>
+    var checkbox = document.getElementById('input_checkbox');
+    var input = document.getElementById('input_block');
+    var input_erase=document.getElementById('input_erase');
+    var test_case_block=document.getElementById('test_case_block');
+$(document).ready(function(){
+    var codeText = $(".codemirror-textarea")[0];
+    var editor = CodeMirror.fromTextArea(codeText, {
+        lineNumbers : true,
+        tabSize: 2,
+  mode: 'python',
+  theme:'base16-dark'
+    });   
+});
+checkbox.addEventListener('click', function () {
+    if (input.style.display != 'block') {
+        input.style.display = 'block';
+        input_erase.value=""
+    } else {
+        input.style.display ='none';
+    }    
+});
+</script>
+</body>
+</html>
