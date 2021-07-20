@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Dancing Script' rel='stylesheet'>
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.css">
 </link>
@@ -21,7 +22,7 @@
     <title>{% block title %}Dcode{% endblock title %}</title>
     <style>
     .header-item{
-      margin-right:40px;
+      margin-right:20px;
       padding:10px;
       border-radius:30px;
       color:#f6f4f2;
@@ -30,6 +31,7 @@
       font-weight:20px;
       font-size:15px;
       text-decoration:none;
+      margin-left:70%
     }
     .header-item:hover{
        background-color:#f53040b6;
@@ -38,7 +40,7 @@
       transition:1s;
     }
     .header-item1{
-      margin-right:40px;
+      margin-right:20px;
       padding:10px;
       background-color:#f53040b9;
       color:#252423;
@@ -46,6 +48,8 @@
       font-family:Arial Black;
         transition:1s;
         text-decoration:none;
+        display:inline-block;
+        
     }
     .header-item1:hover{
       text-decoration:none;
@@ -158,9 +162,15 @@
   </style>
 </head>
 <body>
-    <div style="text-align:right;padding:20px;background-color:#252423;" >
-        <a href="editor" class="header-item">Editor</a>
-        <a href="problem-statements-list"  class="header-item1" >Start Solving</a>
+    <div style="padding:20px;background-color:#252423;">
+          <h3 style="font-family:'Dancing Script';text-align:left;display:inline-block;color:white;font-size:30px">Dcode</h3>
+          {% if user.is_authenticated %}
+            <h3 style="display:inline-block;font-size:20px;color:white;margin-left:70%">{{user.username}}</h3><i style="color:#bc2d38;margin-right:40px;" class="large user icon"></i>
+            <a href="logout"  class="header-item1">Logout</a>
+          {%else%}
+            <a href="register"  class="header-item">SignUp</a>
+            <a href="login"  class="header-item1">Login</a>
+          {%endif%}
     </div> 
     {% block body %}
     <div class="first-div">
@@ -181,23 +191,24 @@
     </section>
     </div>
     <div class="second-div text-center">
-      <!--<div class="code-icon-anim" style="opacity:0"><i class="big code icon" style="color:#bc2d38"></i></div>
-      <div class="code-icon-anim1" style="opacity:0"><i class="big code icon" style="color:#bc2d38"></i></div>-->
       <h1 class="second-h1"><i class="big code icon" style="color:#bc2d38"></i>&nbsp;&nbsp;&nbsp;Start Solving Problems&nbsp;&nbsp;&nbsp;<i class="big code icon" style="color:#bc2d38"></i></h1><br/>
+
       <p style="color:#afadac;font-size:20px">Solve basic python problems and make your <br/>python foundation strong.</p><br/><br/>
+
       <a class="get-start" href="problem-statements-list"><i class="code icon" style="color:#252423;"></i>Get Started</a><br/>
-      <!--<div class="code-icon-anim2" style="opacity:0"><i class="big code icon" style="color:#bc2d38"></i></div>
-      <div class="code-icon-anim3" style="opacity:0"><i class="big code icon" style="color:#bc2d38"></i></div>-->
+
     </div>
     <div class="third-div text-center">
       <div class="col-12 col-sm-4 col-md-4 three-div-block ">
         <i class="huge hand pointer outline icon" style="color:#bc2d38;"></i><br/><br/>
         <h3 style="color:#f6f4f2;font-family:Arial Black;">Easy to use</h3>
       </div>
+
       <div class="col-12 col-sm-4 col-md-4 three-div-block" >
         <i class=" huge desktop icon" style="color:#bc2d38"></i><br/><br/>
         <h3 style="color:#f6f4f2;font-family:Arial Black;">Simple Interface</h3>
       </div>
+
       <div class="col-12 col-sm-4 col-md-4 three-div-block">
         <i class="huge code icon" style="color:#bc2d38"></i><br/><br/>
         <h3 style="color:#f6f4f2;font-family:Arial Black;">Solve anywhere</h3>

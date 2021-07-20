@@ -1,0 +1,53 @@
+{% extends 'index.html' %}
+{% block title %}Dcode Editor{% endblock title %}
+{% block style %}
+.reg-block{
+    background-color:#252423;
+    padding:50px;
+}
+.form-block{
+    width:30%;
+    padding:30px;
+}
+.header-input {
+    background:transparent;
+    border:none;
+    border-bottom: 1px solid #eb0b30;
+    width: 100%;
+    outline:none;
+    padding:5px;
+    border-radius:10px;
+    color:rgb(241, 231, 231);
+}
+label{
+    color:rgb(172, 164, 164);
+    font-family:Arial Black;
+}
+.submit-btn{
+    background-color:#bc2d38;
+    border-radius: 10px;
+    padding:10px;
+    border:none;
+    outline:none;
+    color:white;
+}
+.error-msg{
+    color:#bc2d38;
+    font-size:15px;
+}
+{% endblock style %}
+{% block body %}
+<div class="text-center reg-block">
+    <div class="container form-block">
+    <form action="login" method="POST">
+        {% csrf_token %}
+        <label>Username</label>
+        <input class="header-input" name="username" placeholder="Username"><br/>
+        <br/><label>Password</label>
+        <input class="header-input" type="password" name="password" placeholder="Password">
+        <br/><h3 class="error-msg">{{mess}}</h3>
+        <br/><button type="submit" class="submit-btn">Submit</button>
+    </form>
+    </div>
+</div>
+{% endblock body %}

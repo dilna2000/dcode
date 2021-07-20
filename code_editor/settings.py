@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-7kdag*n%$j950f=d2%d2gk47z+)mv-&)7x*ns*&2s*@rh7%p&g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','dcodereditor.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1','dcoder-editor.herokuapp.com']
 
 
 # Application definition
@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',

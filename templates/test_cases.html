@@ -44,12 +44,17 @@
     padding:20px;
 }
 .test-case-div{
-    height:1400px;
+    height:1500px;
     border-radius:10px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding:20px;
     margin-top:40px;
     margin-bottom:20px
+}
+.points{
+    padding:2px;
+    text-align:right;
+    
 }
 .sample-inp{
     padding:10px;
@@ -71,6 +76,13 @@
     </style>
 </head>
 <body>
+<div>
+    <div class="points container">
+        <h3>{{total_pt}}/70</h3>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width:{{total_pt}}%;background-color:#bc2d38 !important;"  aria-valuemin="0" aria-valuemax="7"></div>
+        </div>
+    </div>
 <div  class="test-case-div container" >
     <div>
         {% block h3 %}
@@ -128,6 +140,7 @@
         </div><br/>
         </div>
     </div> 
+</div>
 </div>
 <script>
     var checkbox = document.getElementById('input_checkbox');
