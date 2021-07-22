@@ -2,9 +2,10 @@
 {% block title %}Dcode Editor{% endblock title %}
 {% block style %}
 .CodeMirror {
-  border: 1px solid #eee;
   height: 80vh;
   font-size:15px;
+  background-color:#1f1e1d;
+  color:white;
 }
 .run-icon{
     background-color:#1f1e1d;
@@ -63,8 +64,8 @@
     var editor = CodeMirror.fromTextArea(codeText, {
         lineNumbers : true,
         tabSize: 2,
-  mode: 'python',
-  theme:'base16-dark'
+        mode: 'python',
+       
     });  
 });
 checkbox.addEventListener('click', function () {

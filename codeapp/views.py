@@ -50,6 +50,9 @@ def problem_statement(request):
     if request.user.is_authenticated:
         total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
         total_pt=total_pt['points__sum']
+        if total_pt==None:
+            total_pt=0
+       
         return render(request,'test_cases.html',{"total_pt":total_pt})
     else:
         return redirect('login')
@@ -57,6 +60,8 @@ def problem_statement2(request):
     if request.user.is_authenticated:
         total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
         total_pt=total_pt['points__sum']
+        if total_pt==None:
+            total_pt=0
         return render(request,'test_cases2.html',{"total_pt":total_pt})
     else:
         return redirect('login')
@@ -65,6 +70,8 @@ def problem_statement3(request):
     if request.user.is_authenticated:
         total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
         total_pt=total_pt['points__sum']
+        if total_pt==None:
+            total_pt=0
         return render(request,'test_cases3.html',{"total_pt":total_pt})
     else:
         return redirect('login')
@@ -73,6 +80,8 @@ def problem_statement4(request):
     if request.user.is_authenticated:
         total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
         total_pt=total_pt['points__sum']
+        if total_pt==None:
+            total_pt=0
         return render(request,'test_cases4.html',{"total_pt":total_pt})
     else:
         return redirect('login')
@@ -81,6 +90,8 @@ def problem_statement5(request):
     if request.user.is_authenticated:
         total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
         total_pt=total_pt['points__sum']
+        if total_pt==None:
+            total_pt=0
         return render(request,'test_cases5.html',{"total_pt":total_pt})
     else:
         return redirect('login')
@@ -89,6 +100,8 @@ def problem_statement6(request):
     if request.user.is_authenticated:
         total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
         total_pt=total_pt['points__sum']
+        if total_pt==None:
+            total_pt=0
         return render(request,'test_cases6.html',{"total_pt":total_pt})
     else:
         return redirect('login')
@@ -97,6 +110,8 @@ def problem_statement7(request):
     if request.user.is_authenticated:
         total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
         total_pt=total_pt['points__sum']
+        if total_pt==None:
+            total_pt=0
         return render(request,'test_cases7.html',{"total_pt":total_pt})
     else:
         return redirect('login')
@@ -121,7 +136,6 @@ def run(request):
             sys.stdout.close()
             sys.stdout=orig_stdout
             output = e
-        
     res = render(request,'editor.html',{"code":code_part,"output":output,"input":y})
     return res
 def run_testcases(request):
@@ -143,6 +157,8 @@ def run_testcases(request):
             output = open('file.txt', 'r').read()
             total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
             total_pt=total_pt['points__sum']
+            if total_pt==None:
+                total_pt=0
             #print(test['test_case1'])
         except Exception as e:
             sys.stdout.close()
@@ -150,6 +166,8 @@ def run_testcases(request):
             output = e
             total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
             total_pt=total_pt['points__sum']
+            if total_pt==None:
+                total_pt=0
         #print(output)
     res = render(request,'test_cases.html',{"code":code_part,"output":output,"input":y,"total_pt":total_pt})
     return res
@@ -172,6 +190,8 @@ def run_testcases2(request):
             output = open('file.txt', 'r').read()
             total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
             total_pt=total_pt['points__sum']
+            if total_pt==None:
+                total_pt=0
             #print(test['test_case1'])
         except Exception as e:
             sys.stdout.close()
@@ -179,6 +199,8 @@ def run_testcases2(request):
             output = e
             total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
             total_pt=total_pt['points__sum']
+            if total_pt==None:
+                total_pt=0
         #print(output)
     res = render(request,'test_cases2.html',{"code":code_part,"output":output,"input":y,"total_pt":total_pt})
     return res
@@ -201,6 +223,8 @@ def run_testcases3(request):
             output = open('file.txt', 'r').read()
             total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
             total_pt=total_pt['points__sum']
+            if total_pt==None:
+                total_pt=0
             #print(test['test_case1'])
         except Exception as e:
             sys.stdout.close()
@@ -208,6 +232,8 @@ def run_testcases3(request):
             output = e
             total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
             total_pt=total_pt['points__sum']
+            if total_pt==None:
+                total_pt=0
         #print(output)
     res = render(request,'test_cases3.html',{"code":code_part,"output":output,"input":y,"total_pt":total_pt})
     return res
@@ -230,6 +256,8 @@ def run_testcases4(request):
             output = open('file.txt', 'r').read()
             total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
             total_pt=total_pt['points__sum']
+            if total_pt==None:
+                total_pt=0
             #print(test['test_case1'])
         except Exception as e:
             sys.stdout.close()
@@ -237,6 +265,8 @@ def run_testcases4(request):
             output = e
             total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
             total_pt=total_pt['points__sum']
+            if total_pt==None:
+                total_pt=0
         #print(output)
     res = render(request,'test_cases4.html',{"code":code_part,"output":output,"input":y,"total_pt":total_pt})
     return res
@@ -259,6 +289,8 @@ def run_testcases5(request):
             output = open('file.txt', 'r').read()
             total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
             total_pt=total_pt['points__sum']
+            if total_pt==None:
+                total_pt=0
             #print(test['test_case1'])
         except Exception as e:
             sys.stdout.close()
@@ -266,6 +298,8 @@ def run_testcases5(request):
             output = e
             total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
             total_pt=total_pt['points__sum']
+            if total_pt==None:
+                total_pt=0
         #print(output)
     res = render(request,'test_cases5.html',{"code":code_part,"output":output,"input":y,"total_pt":total_pt})
     return res
@@ -288,6 +322,8 @@ def run_testcases6(request):
             output = open('file.txt', 'r').read()
             total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
             total_pt=total_pt['points__sum']
+            if total_pt==None:
+                total_pt=0
             #print(test['test_case1'])
         except Exception as e:
             sys.stdout.close()
@@ -295,6 +331,8 @@ def run_testcases6(request):
             output = e
             total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
             total_pt=total_pt['points__sum']
+            if total_pt==None:
+                total_pt=0
         #print(output)
     res = render(request,'test_cases6.html',{"code":code_part,"output":output,"input":y,"total_pt":total_pt})
     return res
@@ -317,6 +355,8 @@ def run_testcases7(request):
             output = open('file.txt', 'r').read()
             total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
             total_pt=total_pt['points__sum']
+            if total_pt==None:
+                total_pt=0
             #print(test['test_case1'])
         except Exception as e:
             sys.stdout.close()
@@ -324,6 +364,8 @@ def run_testcases7(request):
             output = e
             total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
             total_pt=total_pt['points__sum']
+            if total_pt==None:
+                total_pt=0
         #print(output)
     res = render(request,'test_cases7.html',{"code":code_part,"output":output,"input":y,"total_pt":total_pt})
     return res
@@ -352,10 +394,11 @@ def submit_testcases(request):
             output = e
             total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
             total_pt=total_pt['points__sum']
+            if total_pt==None:
+                total_pt=0
         if output==outputt:
                 test_case_accepted="Accepted"
                 if Point.objects.filter(username=request.user).filter(ques_attempted=1).exists():
-                
                     total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
                     total_pt=total_pt['points__sum']
                     
@@ -369,6 +412,8 @@ def submit_testcases(request):
                 test_case_accepted="Not accepted"
                 total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
                 total_pt=total_pt['points__sum']
+                if total_pt==None:
+                    total_pt=0
                
     res = render(request,'test_cases.html',{"code":code_part,"test_case_accepted":test_case_accepted,"inputt":y,"outputt":outputt,"output1":output,"your_input":"Your Input is:","expected_output":"Expected output is:","your_output":"Your Output is:","total_pt":total_pt})
     return res
@@ -397,10 +442,12 @@ def submit_testcases2(request):
             output = e
             total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
             total_pt=total_pt['points__sum']
+            if total_pt==None:
+                total_pt=0
+               
         if output==outputt:
                 test_case_accepted="Accepted"
                 if Point.objects.filter(username=request.user).filter(ques_attempted=2).exists():
-                    
                     total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
                     total_pt=total_pt['points__sum']
                    
@@ -414,6 +461,8 @@ def submit_testcases2(request):
                 test_case_accepted="Not accepted"
                 total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
                 total_pt=total_pt['points__sum']
+                if total_pt==None:
+                    total_pt=0
                
     res = render(request,'test_cases2.html',{"code":code_part,"test_case_accepted":test_case_accepted,"inputt":y,"outputt":outputt,"output1":output,"your_input":"Your Input is:","expected_output":"Expected output is:","your_output":"Your Output is:","total_pt":total_pt})
     return res  
@@ -443,6 +492,8 @@ def submit_testcases3(request):
             output = e
             total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
             total_pt=total_pt['points__sum']
+            if total_pt==None:
+                total_pt=0
         if output==outputt:
                 test_case_accepted="Accepted"
                 if Point.objects.filter(username=request.user).filter(ques_attempted=3).exists():
@@ -460,6 +511,8 @@ def submit_testcases3(request):
                 test_case_accepted="Not accepted"
                 total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
                 total_pt=total_pt['points__sum']
+                if total_pt==None:
+                    total_pt=0
                 
     res = render(request,'test_cases3.html',{"code":code_part,"test_case_accepted":test_case_accepted,"inputt":y,"outputt":outputt,"output1":output,"your_input":"Your Input is:","expected_output":"Expected output is:","your_output":"Your Output is:","total_pt":total_pt})
     return res  
@@ -489,6 +542,8 @@ def submit_testcases4(request):
             output = e
             total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
             total_pt=total_pt['points__sum']
+            if total_pt==None:
+                total_pt=0
         if output==outputt:
                 test_case_accepted="Accepted"
                 if Point.objects.filter(username=request.user).filter(ques_attempted=4).exists():
@@ -506,6 +561,8 @@ def submit_testcases4(request):
                 test_case_accepted="Not accepted"
                 total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
                 total_pt=total_pt['points__sum']
+                if total_pt==None:
+                    total_pt=0
                
     res = render(request,'test_cases4.html',{"code":code_part,"test_case_accepted":test_case_accepted,"inputt":y,"outputt":outputt,"output1":output,"your_input":"Your Input is:","expected_output":"Expected output is:","your_output":"Your Output is:","total_pt":total_pt})
     return res  
@@ -535,6 +592,8 @@ def submit_testcases5(request):
             output = e
             total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
             total_pt=total_pt['points__sum']
+            if total_pt==None:
+                total_pt=0
         if output==outputt:
                 test_case_accepted="Accepted"
                 if Point.objects.filter(username=request.user).filter(ques_attempted=5).exists():
@@ -552,6 +611,8 @@ def submit_testcases5(request):
                 test_case_accepted="Not accepted"
                 total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
                 total_pt=total_pt['points__sum']
+                if total_pt==None:
+                    total_pt=0
                 
     res = render(request,'test_cases5.html',{"code":code_part,"test_case_accepted":test_case_accepted,"inputt":y,"outputt":outputt,"output1":output,"your_input":"Your Input is:","expected_output":"Expected output is:","your_output":"Your Output is:","total_pt":total_pt})
     return res  
@@ -581,6 +642,8 @@ def submit_testcases6(request):
             output = e
             total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
             total_pt=total_pt['points__sum']
+            if total_pt==None:
+                total_pt=0
         if output==outputt:
                 test_case_accepted="Accepted"
                 if Point.objects.filter(username=request.user).filter(ques_attempted=6).exists():
@@ -598,6 +661,8 @@ def submit_testcases6(request):
                 test_case_accepted="Not accepted"
                 total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
                 total_pt=total_pt['points__sum']
+                if total_pt==None:
+                    total_pt=0
                 
     res = render(request,'test_cases6.html',{"code":code_part,"test_case_accepted":test_case_accepted,"inputt":y,"outputt":outputt,"output1":output,"your_input":"Your Input is:","expected_output":"Expected output is:","your_output":"Your Output is:","total_pt":total_pt})
     return res  
@@ -627,6 +692,8 @@ def submit_testcases7(request):
             output = e
             total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
             total_pt=total_pt['points__sum']
+            if total_pt==None:
+                total_pt=0
         if output==outputt:
                 test_case_accepted="Accepted"
                 if Point.objects.filter(username=request.user).filter(ques_attempted=7).exists():
@@ -644,6 +711,8 @@ def submit_testcases7(request):
                 test_case_accepted="Not accepted"
                 total_pt=Point.objects.filter(username=request.user).aggregate(Sum('points'))
                 total_pt=total_pt['points__sum']
+                if total_pt==None:
+                    total_pt=0
                
     res = render(request,'test_cases7.html',{"code":code_part,"test_case_accepted":test_case_accepted,"inputt":y,"outputt":outputt,"output1":output,"your_input":"Your Input is:","expected_output":"Expected output is:","your_output":"Your Output is:","total_pt":total_pt})
     return res 

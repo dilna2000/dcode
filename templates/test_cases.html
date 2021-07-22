@@ -21,9 +21,11 @@
     <title>{% block title %}Python:Tuples{% endblock title %}</title>
     <style>
 .CodeMirror {
-  border: 1px solid #eee;
+  
   height: 80vh;
   font-size:15px;
+  background-color:#1f1e1d;
+  color:white;
 }
 .run-icon{
     background-color:#1f1e1d;
@@ -152,8 +154,7 @@ $(document).ready(function(){
     var editor = CodeMirror.fromTextArea(codeText, {
         lineNumbers : true,
         tabSize: 2,
-  mode: 'python',
-  theme:'base16-dark'
+  mode: 'python'
     });   
 });
 checkbox.addEventListener('click', function () {
