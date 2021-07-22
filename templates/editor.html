@@ -59,14 +59,14 @@
     var checkbox = document.getElementById('input_checkbox');
     var input = document.getElementById('input_block');
     var input_erase=document.getElementById('input_erase');
-    $(document).ready(function(){
+   
     var codeText = document.getElementById('codemirror-textarea');
     var editor = CodeMirror.fromTextArea(codeText, {
         lineNumbers : true,
         tabSize: 2,
         mode: 'python',
     });  
-});
+
 checkbox.addEventListener('click', function () {
     if (input.style.display != 'block') {
         input.style.display = 'block';
