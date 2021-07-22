@@ -33,7 +33,7 @@
             </div>
             <div class="ui form">
                 <div class="field" id="code_lines">
-                    <textarea class="codemirror-textarea" style="border:none;font-size:20px;" name="code_area">{{code}}</textarea>
+                    <textarea id="codemirror-textarea" style="border:none;font-size:20px;" name="code_area">{{code}}</textarea>
                 </div>
             </div> <br/>
             <input type="checkbox"  style="display:inline-block" id="input_checkbox"><h4 style="font-family:Arial Black;display:inline-block;font-size:15px;"> &nbsp;Custom inputs</h4></input><br/><br/>
@@ -60,12 +60,11 @@
     var input = document.getElementById('input_block');
     var input_erase=document.getElementById('input_erase');
     $(document).ready(function(){
-    var codeText = $(".codemirror-textarea")[0];
+    var codeText = document.getElementById('codemirror-textarea');
     var editor = CodeMirror.fromTextArea(codeText, {
         lineNumbers : true,
         tabSize: 2,
         mode: 'python',
-       
     });  
 });
 checkbox.addEventListener('click', function () {
