@@ -100,7 +100,7 @@
             </div>
             <div class="ui form">
                 <div class="field" >
-                    <textarea class="codemirror-textarea" style="border:none;font-size: 13px" name="code_area"  rows="0">{{code}}</textarea>
+                    <textarea id="codemirror-textarea" style="border:none;font-size: 13px" name="code_area"  rows="0">{{code}}</textarea>
                 </div>
             </div><br/>
             <button class="ui black button" onclick="case_block()"   formaction="/submit_testcases" style="margin-left:20px;font-size: 13px;color:#bc2d38;font-family:Arial Black;">Submit</button>
@@ -143,7 +143,7 @@
     var input_erase=document.getElementById('input_erase');
     var test_case_block=document.getElementById('test_case_block');
 
-    var codeText = $(".codemirror-textarea")[0];
+    var codeText = document.getElementById('codemirror-textarea');
     var editor = CodeMirror.fromTextArea(codeText, {
         lineNumbers : true,
         tabSize: 2,
