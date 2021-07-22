@@ -142,7 +142,7 @@
     var input = document.getElementById('input_block');
     var input_erase=document.getElementById('input_erase');
     var test_case_block=document.getElementById('test_case_block');
-$(document).ready(function(){
+
     var codeText = $(".codemirror-textarea")[0];
     var editor = CodeMirror.fromTextArea(codeText, {
         lineNumbers : true,
@@ -150,7 +150,6 @@ $(document).ready(function(){
   mode: 'python',
         theme:'base16-dark'
     });   
-});
 checkbox.addEventListener('click', function () {
     if (input.style.display != 'block') {
         input.style.display = 'block';
