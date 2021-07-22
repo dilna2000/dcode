@@ -151,6 +151,12 @@
   text-decoration:none;
   transition:1s;
 }
+.user_name{
+  display:inline-block;
+  font-size:20px;
+  color:white;
+  margin-left:70%
+}
  @media only screen and (max-width: 600px) {
   .header-item {
     margin-left:20%;
@@ -166,7 +172,7 @@
     <div style="padding:20px;background-color:#252423;">
           <h3 style="font-family:'Dancing Script';text-align:left;display:inline-block;color:white;font-size:30px">Dcode</h3>
           {% if user.is_authenticated %}
-            <h3 style="display:inline-block;font-size:20px;color:white;margin-left:70%" class="user_name">{{user.username}}</h3><i style="color:#bc2d38;margin-right:40px;" class="large user icon"></i>
+            <h3  class="user_name">{{user.username}}</h3><i style="color:#bc2d38;margin-right:40px;" class="large user icon"></i>
             <a href="logout"  class="header-item1">Logout</a>
           {%else%}
             <a href="register"  class="header-item">SignUp</a>
