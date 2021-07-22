@@ -3,17 +3,17 @@
 {% block style %}
 .reg-block{
     background-color:#252423;
-    padding:70px;
+    padding-bottom:40px;
 }
 .form-block{
-    width:30%;
+
     padding:30px;
 }
 .header-input {
     background:transparent;
     border:none;
     border-bottom: 1px solid #eb0b30;
-    width: 100%;
+  
     outline:none;
     padding:5px;
     border-radius:10px;
@@ -41,13 +41,13 @@ label{
     <div class="container form-block">
     <form action="register" method="POST">
         {% csrf_token %}
-        <label>Username</label>
+        <label>Username</label><br/>
         <input class="header-input" type="text" name="username" placeholder="Username"/>
         <h3 class="error-msg">{{username_exist}}</h3><br/>
-        <label>Email</label>
+        <label>Email</label><br/>
         <input type="email" class="header-input" name="email" placeholder="Email"><br/>
         <h3 class="error-msg">{{email_exist}}</h3><br/>
-        <label>Password</label>
+        <label>Password</label><br/>
         <input type="password"  class="header-input" name="password" placeholder="Password"><br/>
         <br/><button type="submit" class="submit-btn">Submit</button>
     </form>
